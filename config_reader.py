@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import configparser
 from os import path
-CONFIG_FILE = "tecnoNinja.conf"
+CONFIG_FILE = "tecnologianinja.conf"
 class NoveConfiguration:
     def __init__(self):
         self.__configuration_parse = configparser.configParser()
