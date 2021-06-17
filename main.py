@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask
-
+from flask import Flask, request, jsonify, abort
+from models.users import Users
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
     return "Bienvenido a tecnoNinja"
+
+
+@app.route('/tecnologianinja/users.browse/<int:id_user>', methods=['GET'])
+def loggin_user(id_user):
+    user = Users(request.json)
+    user_id = user.browse_user(id_user)
+    return jsonify({'user_id': user_id}), 200
 
 
 if __name__ == '__main__':

@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from .db import DataBase
+from .db import Database

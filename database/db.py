@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import psycopg2
 from psycopg2 import pool
+
 from config_reader import NoveConfiguration
 
 class Database:
