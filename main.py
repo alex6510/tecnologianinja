@@ -12,7 +12,7 @@ def index():
 
 @app.route('/tecnologianinja/users.browse/<int:id_user>', methods=['GET'])
 def loggin_user(id_user):
-    user = Users(request.json)
+    user = Users({'id_user':id_user})
     user_id = user.browse_user(id_user)
     return jsonify({'user_id': user_id}), 200
 

@@ -2,14 +2,17 @@
 import configparser
 from os import path
 CONFIG_FILE = "tecnologianinja.conf"
+
+
 class NoveConfiguration:
     def __init__(self):
-        self.__configuration_parse = configparser.configParser()
+        self.__configuration_parse = configparser.ConfigParser()
         absolute_file_path = path.join(path.abspath(path.dirname(__file__)),CONFIG_FILE)
         self.__configuration_parse.read(absolute_file_path)
+
     @property
     def postgres_host(self):
-        return self.__configuration_parse.get(section = 'postgres', option = 'host')
+        return self.__configuration_parse.get(section='postgres', option='host')
 
     @property
     def postgres_user(self):
