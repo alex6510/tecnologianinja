@@ -4,13 +4,13 @@ from database import Database
 class Users:
     def __init__(self, users):
 
-        self._id_user = users.get('id_user', False)
+        self._id = users.get('id', False)
         self._name = users.get('name', False)
         self._password = users.get('password', False)
     
     @staticmethod
-    def browse_user(id_user):
-        browse_user_query = """ select * from users where id_user={id_user}""".format(id_user=id_user)
+    def browse_user(id):
+        browse_user_query = """ select * from users where id={id}""".format(id=id)
         db = Database()
         ps_connection = db.session()
         ps_cursor = ps_connection.cursor() 
@@ -19,9 +19,20 @@ class Users:
         ps_cursor.close()
         return user
 
+    @staticmethod
+    def browse_columns():
+        browse_user_query = """ select * from users """
+        db = Database()
+        ps_connection = db.session()
+        ps_cursor = ps_connection.cursor()
+        ps_cursor.execute(browse_user_query)
+        user = ps_cursor.fetchone()
+        ps_cursor.close()
+        return user
+
     @property
-    def id_user(self):
-        return self._id_user
+    def id(self):
+        return self._id
 
     @property
     def name(self):
@@ -31,9 +42,9 @@ class Users:
     def password(self):
         return self._password
 
-    @id_user.setter
-    def id_user(self, id_user):
-        self._id_user = id_user
+    @id.setter
+    def id_user(self, id):
+        self._id = id
 
     @name.setter
     def name(self, name):
